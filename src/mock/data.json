@@ -1,0 +1,157 @@
+{
+  "uuid": "40100e9b-45a5-4d1f-90fe-14d3d8448093",
+  "lastMigration": 27,
+  "name": "Test API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "75466252-8998-4eba-9503-efe9b965af7b",
+      "type": "http",
+      "documentation": "Get products1",
+      "method": "get",
+      "endpoint": "documents1",
+      "responses": [
+        {
+          "uuid": "53b074cb-5064-4a68-bf28-532475a17577",
+          "body": "[\r\n  {{# repeat 10}}\r\n  {\r\n    \"id\": \"{{guid}}\",\r\n    \"name\": \"{{faker 'commerce.product'}}\",\r\n    \"quantity\": {{faker 'random.numeric' 3}},\r\n    \"deliveryDate\": \"{{date '2023-06-20' '2023-06-30' \"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\"}}\",\r\n    \"price\": {{int 0 5000}},\r\n    \"currency\": \"{{someOf (array 'USD' 'RUB') 1 1}}\"\r\n  }\r\n  {{/ repeat}}\r\n]",
+          "latency": 500,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f3dfe860-8282-4956-92c2-5c5820164289",
+      "type": "http",
+      "documentation": "Get products2",
+      "method": "get",
+      "endpoint": "documents2",
+      "responses": [
+        {
+          "uuid": "f9bf4f08-aac8-4095-b459-e1e79bca254d",
+          "body": "[\r\n  {{# repeat 10}}\r\n  {\r\n    \"id\": \"{{guid}}\",\r\n    \"name\": \"{{faker 'name.firstName'}}\",\r\n    \"quantity\": {{faker 'random.numeric' 3}},\r\n    \"deliveryDate\": \"{{date '2023-06-20' '2023-06-30' \"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\"}}\",\r\n    \"price\": {{int 0 5000}},\r\n    \"currency\": \"{{someOf (array 'USD' 'RUB') 1 1}}\"\r\n  }\r\n  {{/ repeat}}\r\n]",
+          "latency": 1000,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "96b77652-abd9-469c-999f-263602b37e51",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "cancel",
+      "responses": [
+        {
+          "uuid": "d36461dc-65a6-49b9-ade6-36167a32b8ad",
+          "body": "{success: true}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "75466252-8998-4eba-9503-efe9b965af7b"
+    },
+    {
+      "type": "route",
+      "uuid": "f3dfe860-8282-4956-92c2-5c5820164289"
+    },
+    {
+      "type": "route",
+      "uuid": "96b77652-abd9-469c-999f-263602b37e51"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}
