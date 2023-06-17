@@ -1,5 +1,5 @@
 .layout {
-  height: 100%;
+  min-height: 100%;
 }
 
 .container {
@@ -15,10 +15,7 @@
 
 .main {
   flex: 1 1 auto;
-}
-
-.main .container {
-  background-color: lightblue;
+  background-color: #ccc;
 }
 
 .footer {

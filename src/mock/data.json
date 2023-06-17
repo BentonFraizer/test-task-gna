@@ -17,7 +17,7 @@
       "responses": [
         {
           "uuid": "53b074cb-5064-4a68-bf28-532475a17577",
-          "body": "[\r\n  {{# repeat 10}}\r\n  {\r\n    \"id\": \"{{guid}}\",\r\n    \"name\": \"{{faker 'commerce.product'}}\",\r\n    \"quantity\": {{faker 'random.numeric' 3}},\r\n    \"deliveryDate\": \"{{date '2023-06-20' '2023-06-30' \"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\"}}\",\r\n    \"price\": {{int 0 5000}},\r\n    \"currency\": \"{{someOf (array 'USD' 'RUB') 1 1}}\"\r\n  }\r\n  {{/ repeat}}\r\n]",
+          "body": "[\r\n  {{# repeat 5}}\r\n  {\r\n    \"id\": \"{{guid}}\",\r\n    \"name\": \"{{faker 'commerce.product'}}\",\r\n    \"quantity\": {{faker 'random.numeric' 3}},\r\n    \"deliveryDate\": \"{{date '2023-06-20' '2023-06-30' \"yyyy-MM-dd HH:mm:ss\"}}\",\r\n    \"price\": {{int 0 5000}},\r\n    \"currency\": \"{{someOf (array 'USD' 'RUB') 1 1}}\"\r\n  }\r\n  {{/ repeat}}\r\n]",
           "latency": 500,
           "statusCode": 200,
           "label": "",
@@ -50,7 +50,7 @@
       "responses": [
         {
           "uuid": "f9bf4f08-aac8-4095-b459-e1e79bca254d",
-          "body": "[\r\n  {{# repeat 10}}\r\n  {\r\n    \"id\": \"{{guid}}\",\r\n    \"name\": \"{{faker 'commerce.product'}}\",\r\n    \"quantity\": {{faker 'random.numeric' 3}},\r\n    \"deliveryDate\": \"{{date '2023-06-20' '2023-06-30' \"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\"}}\",\r\n    \"price\": {{int 0 5000}},\r\n    \"currency\": \"{{someOf (array 'USD' 'RUB') 1 1}}\"\r\n  }\r\n  {{/ repeat}}\r\n]",
+          "body": "[\r\n  {{# repeat 5}}\r\n  {\r\n    \"id\": \"{{guid}}\",\r\n    \"name\": \"{{faker 'commerce.product'}}\",\r\n    \"quantity\": {{faker 'random.numeric' 3}},\r\n    \"deliveryDate\": \"{{date '2023-06-20' '2023-06-30' \"yyyy-MM-dd HH:mm:ss\"}}\",\r\n    \"price\": {{int 0 5000}},\r\n    \"currency\": \"{{someOf (array 'USD' 'RUB') 1 1}}\"\r\n  }\r\n  {{/ repeat}}\r\n]",
           "latency": 1000,
           "statusCode": 200,
           "label": "",
