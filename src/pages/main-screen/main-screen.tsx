@@ -7,6 +7,7 @@ import { getProducts1, getProducts2 } from '../../store/site-data/selectors';
 import { ProductKey } from '../../types';
 import { addKey } from '../../utils/utils';
 import './main-screen.css';
+import TableSummaryRow from '../../components/table-summary-row';
 
 function MainScreen(): JSX.Element {
   const productsList1 = useAppSelector(getProducts1);
@@ -93,7 +94,18 @@ function MainScreen(): JSX.Element {
         Reload
       </Button>
 
-      <Table style={{ paddingTop: 15 }} pagination={false} rowSelection={rowSelection} columns={columns} dataSource={productsList} loading={loading} onChange={handleChange} />
+      <Table
+        style={{ paddingTop: 15 }}
+        pagination={false}
+        rowSelection={rowSelection}
+        columns={columns}
+        dataSource={productsList}
+        loading={loading}
+        onChange={handleChange}
+        bordered
+        // eslint-disable-next-line react/no-unstable-nested-components
+        summary={(data) => <TableSummaryRow data={[...data]} />}
+      />
     </>
   );
 }
