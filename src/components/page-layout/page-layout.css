@@ -1,0 +1,28 @@
+.layout {
+  height: 100%;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  min-height: 100%;
+}
+
+.header .container {
+  color: #fff;
+  text-align: center;
+}
+
+.main {
+  flex: 1 1 auto;
+}
+
+.main .container {
+  background-color: lightblue;
+}
+
+.footer {
+  color: #fff;
+  background-color: #001529;
+  text-align: center;
+}

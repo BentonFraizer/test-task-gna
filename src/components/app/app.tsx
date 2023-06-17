@@ -6,6 +6,8 @@ import { useAppSelector, useAppDispatch } from '../../hooks';
 import MainScreen from '../../pages/main-screen/main-screen';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import { fetchProducts1Action, fetchProducts2Action } from '../../store/api-actions';
+import 'antd/dist/reset.css';
+import PageLayout from '../page-layout/page-layout';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -14,11 +16,18 @@ function App(): JSX.Element {
   useEffect(() => {
     dispatch(fetchProducts1Action());
     dispatch(fetchProducts2Action());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Routes>
-      <Route path={AppRoute.Main} element={<MainScreen />} />
+      <Route
+        path={AppRoute.Main}
+        element={
+          <PageLayout>
+            <MainScreen />
+          </PageLayout>
+        }
+      />
       <Route path="*" element={<NotFoundScreen />} />
     </Routes>
   );

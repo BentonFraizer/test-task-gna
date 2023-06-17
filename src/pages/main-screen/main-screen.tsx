@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { getProducts1, getProducts2 } from '../../store/site-data/selectors';
 import { Product } from '../../types';
+import './main-screen.css';
 
 function MainScreen(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -16,15 +17,15 @@ function MainScreen(): JSX.Element {
   }, [productsList1, productsList2]);
 
   return (
-    <div>
-      <h1>This is a main page</h1>
+    <>
+      <h1 className="main-heading">This is a main page.</h1>
       <ul>
         {productsList?.map((product) => (
           <li key={product.id}>{product.name}</li>
         ))}
       </ul>
-    </div>
+    </>
   );
 }
 
-export default MainScreen;
+export default memo(MainScreen);
