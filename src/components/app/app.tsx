@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AppRoute } from '../../consts';
-import { useAppSelector, useAppDispatch } from '../../hooks';
-// import { getProducts1, getProducts2, getIsDataLoadedStatus } from '../../store/site-data/selectors';
+import { useAppDispatch } from '../../hooks';
 import MainScreen from '../../pages/main-screen/main-screen';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import { fetchProducts1Action, fetchProducts2Action } from '../../store/api-actions';
@@ -11,7 +10,6 @@ import PageLayout from '../page-layout/page-layout';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
-  // const isDataLoaded = useAppSelector(getIsDataLoadedStatus);
 
   useEffect(() => {
     dispatch(fetchProducts1Action());

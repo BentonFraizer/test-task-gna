@@ -1,11 +1,11 @@
+/* eslint-disable array-callback-return */
 import { ProductKey, Product } from '../types';
 
 // Функция добавления ключа key для каждого из передаваемых объектов
 export const addKey = (products: Product[]): ProductKey[] => products.map((product: Product, i: number) => ({ ...product, key: String(i) }));
 
-// Функция для получения
+// Функция для получения наименований выбранных товаров в виде строки
 export const getProduntsNames = (products: ProductKey[], keys: React.Key[]): string => {
-  // eslint-disable-next-line array-callback-return
   const filteredProducts = products.filter((product) => {
     if (keys.includes(product.key)) {
       return product;
@@ -14,6 +14,16 @@ export const getProduntsNames = (products: ProductKey[], keys: React.Key[]): str
 
   const names = filteredProducts.map((product) => product.name.toLowerCase());
 
-  const result = `${names.join(', ')}.`;
-  return result;
+  return `${names.join(', ')}?`;
+};
+
+// Функция получения массива идентификаторов продуктов, которые необходимо аннулировать
+export const getProductsIds = (products: ProductKey[], keys: React.Key[]): (string | undefined)[] => {
+  const filteredProducts = products.filter((product) => {
+    if (keys.includes(product.key)) {
+      return product;
+    }
+  });
+
+  return filteredProducts.map((product) => product.id);
 };

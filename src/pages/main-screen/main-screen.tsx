@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Button } from 'antd';
+import { Table } from 'antd';
 import type { TableProps } from 'antd';
 import type { ColumnsType, SorterResult } from 'antd/es/table/interface';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { getProducts1, getProducts2 } from '../../store/site-data/selectors';
 import { ProductKey } from '../../types';
-import { addKey, getProduntsNames } from '../../utils/utils';
+import { addKey, getProduntsNames, getProductsIds } from '../../utils/utils';
 import './main-screen.css';
 import TableSummaryRow from '../../components/table-summary-row';
 import CancelModal from '../../components/cancel-modal/cancel-modal';
+import { cancelOrderAction } from '../../store/api-actions';
 
 function MainScreen(): JSX.Element {
+  const dispatch = useAppDispatch();
   const productsList1 = useAppSelector(getProducts1);
   const productsList2 = useAppSelector(getProducts2);
   const [productsList, setProductsList] = useState<ProductKey[]>([]);
@@ -19,6 +21,7 @@ function MainScreen(): JSX.Element {
   const [sortedInfo, setSortedInfo] = useState<SorterResult<ProductKey>>({});
 
   // Получение данных с сервера. Объединение данных в один массив
+  // Добавление ключа 'key' каждому объекту для корректной работы таблицы
   useEffect(() => {
     if (productsList1.length !== 0 && productsList2.length !== 0) {
       setProductsList(addKey([...productsList1, ...productsList2]));
@@ -26,8 +29,11 @@ function MainScreen(): JSX.Element {
     }
   }, [productsList1, productsList2]);
 
-  // Обработчик очистки всех чекбоксов
-  const handleClear = (): void => {
+  // Обработчик отправки запроса отмены на эндпоинт '/cancel'. Удаление позиций из общего массива и,
+  // соответственно, из таблицы
+  const onClickCancelBtnHandler = (): void => {
+    dispatch(cancelOrderAction({ productsIds: getProductsIds(productsList, selectedRowKeys) }));
+    setProductsList(productsList.filter((product) => !selectedRowKeys.includes(product.key)));
     setSelectedRowKeys([]);
   };
 
@@ -91,10 +97,6 @@ function MainScreen(): JSX.Element {
 
   return (
     <>
-      {/* <Button type="primary" onClick={handleClear} disabled={!hasSelected}>
-        Reload
-      </Button> */}
-
       <Table
         style={{ paddingTop: 15 }}
         pagination={false}
@@ -108,7 +110,7 @@ function MainScreen(): JSX.Element {
         summary={(data) => <TableSummaryRow data={[...data]} />}
       />
 
-      <CancelModal disable={hasSelected} productsNames={getProduntsNames(productsList, selectedRowKeys)} />
+      <CancelModal disable={hasSelected} productsNames={getProduntsNames(productsList, selectedRowKeys)} cancelSubmit={onClickCancelBtnHandler} />
     </>
   );
 }

@@ -5,13 +5,14 @@ import './cancel-modal.css';
 type CancelModalProp = {
   disable: boolean;
   productsNames: string;
+  cancelSubmit: () => void;
 };
 
-function CancelModal({ disable, productsNames }: CancelModalProp): JSX.Element {
-  console.log('productsNames:', productsNames);
+function CancelModal({ disable, productsNames, cancelSubmit }: CancelModalProp): JSX.Element {
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [modalText, setModalText] = useState('');
+  const [disableBtn, setDisableBtn] = useState(false);
 
   useEffect(() => {
     setModalText(`Вы уверены что хотите аннулировать товар(ы): ${productsNames}`);
@@ -24,10 +25,13 @@ function CancelModal({ disable, productsNames }: CancelModalProp): JSX.Element {
   const handleOk = (): void => {
     setModalText('Выполняется удаление выбранных товаров.');
     setConfirmLoading(true);
+    setDisableBtn(true);
     setTimeout(() => {
+      cancelSubmit();
       setOpen(false);
       setConfirmLoading(false);
       setModalText(`Вы уверены что хотите аннулировать товар(ы): ${productsNames}`);
+      setDisableBtn(false);
     }, 2000);
   };
 
@@ -49,6 +53,7 @@ function CancelModal({ disable, productsNames }: CancelModalProp): JSX.Element {
         onCancel={handleCancel}
         cancelText="Отклонить"
         okText="Применить"
+        cancelButtonProps={{ disabled: disableBtn }}
       >
         <p>{modalText}</p>
       </Modal>
