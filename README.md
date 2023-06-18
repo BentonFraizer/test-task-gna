@@ -92,3 +92,9 @@ npm start
 
 6. В том случае если браузер не открылся, адресной строке необходимо ввести следующий путь:
    http://localhost:3000/
+
+---
+
+# Страница приложения.
+
+<img src="https://github.com/BentonFraizer/test-task-gna/blob/main/.github/workflows/main_page.png" width="769" />
