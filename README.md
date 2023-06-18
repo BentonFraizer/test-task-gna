@@ -62,11 +62,17 @@ git clone git@github.com:BentonFraizer/test-task-gna.git
 npm install
 ```
 
+3. Установить mockoon-cli:
+
+```
+npm install -g @mockoon/cli
+```
+
 > **Предупреждение**
 >
-> Для выполнения шага №3 не рекомендуется использовать Windows Powershell. Желательно воспользоваться Git Bash.
+> Для выполнения шага №4 не рекомендуется использовать Windows Powershell. Желательно воспользоваться Git Bash.
 
-3. Запустить сервер с моковыми данными:
+4. Запустить сервер с моковыми данными:
 
 ```
 mockoon-cli start --data ./src/mock/data.json --port 3001
@@ -78,11 +84,11 @@ mockoon-cli start --data ./src/mock/data.json --port 3001
 mockoon-cli stop 0
 ```
 
-4. Запустить проект в работу:
+5. Запустить проект в работу:
 
 ```
 npm start
 ```
 
-5. В том случае если браузер не открылся, адресной строке необходимо ввести следующий путь:
+6. В том случае если браузер не открылся, адресной строке необходимо ввести следующий путь:
    http://localhost:3000/
