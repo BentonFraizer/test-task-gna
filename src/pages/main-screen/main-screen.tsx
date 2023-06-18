@@ -5,9 +5,10 @@ import type { ColumnsType, SorterResult } from 'antd/es/table/interface';
 import { useAppSelector } from '../../hooks';
 import { getProducts1, getProducts2 } from '../../store/site-data/selectors';
 import { ProductKey } from '../../types';
-import { addKey } from '../../utils/utils';
+import { addKey, getProduntsNames } from '../../utils/utils';
 import './main-screen.css';
 import TableSummaryRow from '../../components/table-summary-row';
+import CancelModal from '../../components/cancel-modal/cancel-modal';
 
 function MainScreen(): JSX.Element {
   const productsList1 = useAppSelector(getProducts1);
@@ -90,9 +91,9 @@ function MainScreen(): JSX.Element {
 
   return (
     <>
-      <Button type="primary" onClick={handleClear} disabled={!hasSelected}>
+      {/* <Button type="primary" onClick={handleClear} disabled={!hasSelected}>
         Reload
-      </Button>
+      </Button> */}
 
       <Table
         style={{ paddingTop: 15 }}
@@ -106,6 +107,8 @@ function MainScreen(): JSX.Element {
         // eslint-disable-next-line react/no-unstable-nested-components
         summary={(data) => <TableSummaryRow data={[...data]} />}
       />
+
+      <CancelModal disable={hasSelected} productsNames={getProduntsNames(productsList, selectedRowKeys)} />
     </>
   );
 }

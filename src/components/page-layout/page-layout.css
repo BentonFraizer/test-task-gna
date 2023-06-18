@@ -18,6 +18,11 @@
   background-color: #ccc;
 }
 
+.main .container {
+  display: flex;
+  flex-direction: column;
+}
+
 .footer {
   color: #fff;
   background-color: #001529;
