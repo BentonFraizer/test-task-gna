@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function NotFoundScreen(): JSX.Element {
   return (
-    <div className="wrapper">
+    <div className="wrapper" style={{ textAlign: 'center', paddingTop: 100 }}>
       <main>
         <div className="page-message">
           <h1 className="page-message__title">404</h1>

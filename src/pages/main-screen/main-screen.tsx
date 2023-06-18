@@ -7,7 +7,7 @@ import { getProducts1, getProducts2 } from '../../store/site-data/selectors';
 import { ProductKey } from '../../types';
 import { addKey, getProduntsNames, getProductsIds } from '../../utils/utils';
 import './main-screen.css';
-import TableSummaryRow from '../../components/table-summary-row';
+import TableSummaryRow from '../../components/table-summary-row/table-summary-row';
 import CancelModal from '../../components/cancel-modal/cancel-modal';
 import { cancelOrderAction } from '../../store/api-actions';
 
