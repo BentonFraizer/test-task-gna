@@ -2,7 +2,10 @@
 import { ProductKey, Product } from '../types';
 
 // Функция добавления ключа key для каждого из передаваемых объектов
-export const addKey = (products: Product[]): ProductKey[] => products.map((product: Product, i: number) => ({ ...product, key: String(i) }));
+export const addKey = (products: Product[]): ProductKey[] => {
+  const produvtsWithKeys = products.map((product: Product, i: number) => ({ ...product, key: String(i) }));
+  return produvtsWithKeys.map((product) => ({ ...product, deliveryDate: product.deliveryDate.slice(0, 10) }));
+};
 
 // Функция для получения наименований выбранных товаров в виде строки
 export const getProduntsNames = (products: ProductKey[], keys: React.Key[]): string => {

@@ -12,7 +12,7 @@ function TableSummaryRow({ data }: TableSummaryRowProps): JSX.Element {
   let total = 0;
 
   data.forEach((item) => {
-    total += item.quantity;
+    total += Number(item.quantity);
   });
   return (
     <Table.Summary.Row>

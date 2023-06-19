@@ -1,5 +1,5 @@
 export enum AppRoute {
-  Main = '/',
+  Main = '/test-task-gna',
 }
 
 export enum NameSpace {

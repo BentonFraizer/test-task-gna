@@ -95,6 +95,8 @@ npm start
 
 ---
 
+[Ссылка для приложение](https://bentonfraizer.github.io/test-task-gna/)
+
 # Страница приложения.
 
 <img src="https://github.com/BentonFraizer/test-task-gna/blob/main/.github/workflows/main_page.png" width="769" />
