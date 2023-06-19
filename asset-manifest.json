@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/test-task-gna/static/css/main.3d8d6a0d.css",
+    "main.js": "/test-task-gna/static/js/main.e60a5f7f.js",
+    "index.html": "/test-task-gna/index.html",
+    "main.3d8d6a0d.css.map": "/test-task-gna/static/css/main.3d8d6a0d.css.map",
+    "main.e60a5f7f.js.map": "/test-task-gna/static/js/main.e60a5f7f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3d8d6a0d.css",
+    "static/js/main.e60a5f7f.js"
+  ]
+}
