@@ -2,6 +2,7 @@
 import { ProductKey, Product } from '../types';
 
 // Функция добавления ключа key для каждого из передаваемых объектов
+// Дополнительно функция преобразует формат даты с '2023-08-17T12:37:03.063Z' в '2023-08-17'
 export const addKey = (products: Product[]): ProductKey[] => {
   const produvtsWithKeys = products.map((product: Product, i: number) => ({ ...product, key: String(i) }));
   return produvtsWithKeys.map((product) => ({ ...product, deliveryDate: product.deliveryDate.slice(0, 10) }));
